@@ -11,4 +11,4 @@ Las matrices serán entregadas en un archivo de texto plano llamado “matriz.i
 
 ## Salida:
 
-La salida de su programa debe presentar el valor de la potencia de la matriz entregada por la consola, junto con el tamaño de la matriz dispersa y su equivalente matriz completa como se muestra en la Figura 3.
+La salida de su programa debe presentar el valor de la potencia de la matriz entregada por la consola, junto con el tamaño de la matriz dispersa y su equivalente matriz completa.
