@@ -7,7 +7,7 @@ Para este lab hay que tener en consideración los siguientes puntos:
 
 ## Entradas:
 
-Las matrices serán entregadas en un archivo de texto plano llamado “matriz.in” el cual tendrá el formato mostrado en la Figura 1 y 2. La primera línea tendrá un número indicando las dimensiones de la matriz y otro número indicando la potencia a calcular. Luego, las siguientes líneas tendrán los valores de la matriz separados por un espacio.
+Las matrices serán entregadas en un archivo de texto plano llamado “matriz.in”. La primera línea tendrá un número indicando las dimensiones de la matriz y otro número indicando la potencia a calcular. Luego, las siguientes líneas tendrán los valores de la matriz separados por un espacio.
 
 ## Salida:
 
