@@ -30,3 +30,13 @@
 
 # Debug files
 *.dSYM/
+
+\.vscode/ipch/58fbbe70c73bb553/mmap_address\.bin
+
+\.vscode/ipch/58fbbe70c73bb553/programa\.ipch
+
+\.vscode/ipch/58fbc770c73bc49e/mmap_address\.bin
+
+\.vscode/ipch/58fbc770c73bc49e/programa\.ipch
+
+exe
