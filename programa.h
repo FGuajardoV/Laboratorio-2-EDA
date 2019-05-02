@@ -3,21 +3,16 @@
 #include <string.h>
 
 //Estructuras utilizadas.
-typedef struct
+typedef struct Nodo
 {
     int posX;
     int posY;
     double valor;
+    struct Nodo *sig;
 } Nodo;
 
-typedef struct lista
-{
-    Nodo nodo;
-    lista *sgte;
-} Lista ;
-
-
 //Prototipos de Funciones.
-Lista * leerArchivo();
+Nodo * leerArchivo();
+Nodo * crearNodo();
 
 
