@@ -8,11 +8,14 @@ typedef struct Nodo
     int posFila;
     int posCol;
     double valor;
+    int tamanoMatriz;
     struct Nodo *sig;
 } Nodo;
 
 //Prototipos de Funciones.
 Nodo * leerArchivo();
-Nodo * crearNodo( int, int, double );
-double calcular_potencia( double, int );
-
+Nodo * crearNodo ( int, int, double );
+double calcular_potencia ( double, int );
+void mostrar_arreglo();
+void liberar_memoria();
+unsigned long calcular_tamano();
