@@ -9,15 +9,15 @@ int main()
 
     matrix = leerArchivo();
 
-    printf ("\nMatriz resultante es: \n\n");
+    printf ("Matriz resultante: \n\n");
 
     mostrar_arreglo ( matrix );
 
-    // Corresponde al tamano del double = 8 bytes, int = 2 bytes. Puesto que en el nodo
+    // Corresponde al tamano del double = 8 bytes, int = 4 bytes. Puesto que en el nodo
     //se posee un double (valor), 3 int (posFila, posCol, tamanoMatriz) se procede de la forma.
     // Suponiendo que se almacenara la matriz completa, necesitamos la cantidad total de elementos
     //contando los 0.
-    tamano = ( 8 + ( 3 * 2 ) ) * matrix -> tamanoMatriz * matrix -> tamanoMatriz;
+    tamano = ( sizeof ( double ) + ( 3 * sizeof ( int ) ) ) * matrix -> tamanoMatriz * matrix -> tamanoMatriz;
 
     printf ( "\nEl tamano en memoria de la matriz dispersa: %d bytes", calcular_tamano ( matrix ) );
     printf ( "\nEl tamano en memoria de la matriz completa habria sido: %d bytes", tamano );
@@ -84,6 +84,7 @@ Nodo * leerArchivo()
         // Leemos la primera linea del archivo y almacenamos los datos que nos especificaran el 
         //tamano del arreglo y la potencia que se debe de aplicar.
         fscanf ( file, "%d %d\n", &largoMatriz, &potencia );
+        printf("Potencia a calcular: %d\n", potencia);
         double valor;
         Nodo * auxiliar;
 
@@ -169,14 +170,14 @@ void mostrar_arreglo ( Nodo * matriz )
                 //a mostrar el elemento en pantalla, sino, se agregara un cero en su lugar.
                 if ( auxiliar -> posCol == columna )
                 {
-                    printf("%f ", auxiliar -> valor );
+                    printf("%f\t", auxiliar -> valor );
                     
                     // Se dejecuta este if para prevenir el analizar un nodo en estado NULL.
                     if ( auxiliar -> sig != NULL)
                         auxiliar = auxiliar -> sig;
                 }
                 else
-                    printf("%f ", valorNeutro);
+                    printf("%f\t", valorNeutro);
 
                 columna++;
             }
@@ -207,9 +208,9 @@ int calcular_tamano ( Nodo * matriz )
     Nodo * aux = matriz;
     int resultado = 0, size;
 
-    // Corresponde al tamano del double = 8 bytes, int = 2 bytes. Puesto que en el nodo
+    // Corresponde al tamano del double = 8 bytes, int = 4 bytes. Puesto que en el nodo
     //se posee un double (valor), 3 int (posFila, posCol, tamanoMatriz) se procede de la forma.
-    size = 8 + ( 3 * 2 ); 
+    size = sizeof ( double ) + ( 3 * sizeof(int) ); 
 
     while ( aux != NULL)
     {
