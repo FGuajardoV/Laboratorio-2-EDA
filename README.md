@@ -12,3 +12,11 @@ Las matrices serán entregadas en un archivo de texto plano llamado “matriz.i
 ## Salida:
 
 La salida de su programa debe presentar el valor de la potencia de la matriz entregada por la consola, junto con el tamaño de la matriz dispersa y su equivalente matriz completa.
+
+Para **compilar** se es necesario seguir la siguiente sentencia:
+
+`gcc programa.c -o exe`, para luego ejecutar, se usa la linea `./exe`
+
+### Todo esto desarrollado dentro de la carpeta donde se encuentra el archivo.c
+
+Dentro del programa se le solicitara un archivo para poder analizar, este archivo debe de estar en la **misma carpeta** donde se encuentra el programa. 

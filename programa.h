@@ -14,8 +14,13 @@ typedef struct Nodo
 
 //Prototipos de Funciones.
 Nodo * leerArchivo();
+
 Nodo * crearNodo ( int, int, double );
+
 double calcular_potencia ( double, int );
+
 void mostrar_arreglo();
+
 void liberar_memoria();
-unsigned long calcular_tamano();
+
+int calcular_tamano();
