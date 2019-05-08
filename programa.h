@@ -5,14 +5,14 @@
 //Estructuras utilizadas.
 typedef struct Nodo
 {
-    int posX;
-    int posY;
+    int posFila;
+    int posCol;
     double valor;
     struct Nodo *sig;
 } Nodo;
 
 //Prototipos de Funciones.
 Nodo * leerArchivo();
-Nodo * crearNodo();
-
+Nodo * crearNodo( int, int, double );
+double calcular_potencia( double, int );
 

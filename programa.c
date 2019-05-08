@@ -5,20 +5,22 @@ int main()
     Nodo * matrix;
     matrix = leerArchivo();
 
+    printf("Espacio usado en memoria por la matriz dispersa: %lu", sizeof ( matrix ) );
+
     printf ( "\n\n************************** Fin Programa *************************\n\n" );
 
 }
 
-Nodo * crearNodo(int x, int y)
+Nodo * crearNodo ( int fila, int col, double valor )
 {
     //Se pide el espacio de memoria para la estructura
 	Nodo *nodo = ( Nodo * ) malloc ( sizeof ( Nodo ) );
 	//Si la asignacion de memoria es exitosa, se inicializan las variables
 	if ( nodo != NULL )
     {
-	    nodo -> posX    =   x;
-        nodo -> posY    =   y;
-        nodo -> valor   =   0;
+	    nodo -> posFila =   fila;
+        nodo -> posCol  =   col;
+        nodo -> valor   =   valor;
 		nodo -> sig     =   NULL;
 		return nodo;
 	}
@@ -34,7 +36,8 @@ Nodo * leerArchivo()
     FILE * file;
     char fileName[ 256 ];
     int largoMatriz, potencia;  
-    Nodo * nuevoNodo;
+    Nodo * Matriz;
+    int i, j;
 
     printf ( "\n\n************************ Inicio Programa ************************\n\n" );
 
@@ -51,18 +54,53 @@ Nodo * leerArchivo()
         perror ( "Error al intentar de abrir el archivo... " );
         printf ( "\n\n************************** Fin Programa *************************\n\n" );
         exit ( EXIT_FAILURE );
-        return nuevoNodo;
     }
 
     else
     {
-        fscanf ( file, "%d %d\n", &largoMatriz, &potencia ); //printf("Largo matriz: %d, potencia: %d\n",largoMatriz, potencia);
-        int i = 0, j = 0;
-        nuevoNodo = crearNodo( i, j );
+        fscanf ( file, "%d %d\n", &largoMatriz, &potencia );
+        double valor;
+        Nodo * auxiliar;
+
+        for ( i = 0; i < largoMatriz; i++ )
+        {
+            for ( j = 0; j < largoMatriz; j++ )
+            {
+                //Se almacenan en double, si no encuentra un double sale del for por el break.
+                //Pero el puntero del archivo se sigue moviendo.
+                if ( !fscanf ( file, "%lf", &valor ) )
+                    break;
+                    
+                if ( valor != 0 && Matriz == NULL )
+                {
+                    double auxValor = calcular_potencia ( valor, potencia );
+                    Nodo * nuevoNodo = crearNodo ( i, j, auxValor );
+                    Matriz = nuevoNodo;
+                    auxiliar = Matriz;
+                }
+
+                else if ( valor != 0 )
+                {
+                    double auxValor = calcular_potencia ( valor, potencia );
+                    Nodo * nuevoNodo = crearNodo ( i, j, auxValor );
+                    auxiliar -> sig = nuevoNodo;
+                    auxiliar = auxiliar -> sig;
+            //printf("Valor ( %lf ) en (%d, %d)\n", auxiliar->valor, auxiliar->posFila, auxiliar->posCol); 
+                }
+            }
+        }
     }
 
     fclose ( file );
-    return nuevoNodo;
+    return Matriz;
 }
 
-//https://global.cainiao.com/detail.htm?mailNoList=12881800227000211904051001&spm=a3708.7860688.0.d01
+double calcular_potencia ( double valor, int potencia )
+{
+    double resultado = 1;
+
+    for ( int i = 1; i <= potencia; i++)
+        resultado *= valor;
+
+    return resultado;
+}
