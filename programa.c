@@ -9,7 +9,7 @@ int main()
 
     matrix = leerArchivo();
 
-    printf ("Matriz resultante: \n\n");
+    printf ( "Matriz resultante: \n\n" );
 
     mostrar_arreglo ( matrix );
 
@@ -134,6 +134,10 @@ Nodo * leerArchivo()
 double calcular_potencia ( double valor, int potencia )
 {
     double resultado = 1;
+
+    // Cualquier numero elevado a 0 es 1.
+    if ( potencia == 0)
+        return resultado;
 
     for ( int i = 1; i <= potencia; i++)
         resultado *= valor;
